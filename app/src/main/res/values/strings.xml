@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">Basic Logins</string>
+    <string name="login_username">Username</string>
+    <string name="login_password">Password</string>
+    <string name="login_loginhint">Login</string>
+    <string name="login_createaccounttext">Create an Account</string>
+    <string name="createaccount_namehint">Name</string>
+    <string name="createaccount_password">Password (6&#8211;12 characters)</string>
+    <string name="createaccount_confirmpassword">Confirm Password</string>
+    <string name="createaccount_email">E-mail</string>
+    <string name="createaccount_username">Username</string>
+    <string name="createaccount_createtext">Create Account</string>
 </resources>
