@@ -52,6 +52,7 @@
         android:layout_marginBottom="24dp"
         android:layout_marginTop="8dp"
         android:text="@string/login_createaccounttext"
+        android:textColor="#ff0000ff"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/button_login_login"
         app:layout_constraintHorizontal_bias="0.5"

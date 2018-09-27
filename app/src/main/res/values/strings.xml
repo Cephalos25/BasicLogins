@@ -3,7 +3,7 @@
     <string name="login_username">Username</string>
     <string name="login_password">Password</string>
     <string name="login_loginhint">Login</string>
-    <string name="login_createaccounttext">Create an Account</string>
+    <string name="login_createaccounttext"><u>Create an Account</u></string>
     <string name="createaccount_namehint">Name</string>
     <string name="createaccount_password">Password (6&#8211;12 characters)</string>
     <string name="createaccount_confirmpassword">Confirm Password</string>
