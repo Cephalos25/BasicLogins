@@ -15,12 +15,18 @@ public class CreateAccountActivity extends AppCompatActivity {
     private EditText emailField;
     private Button buttonCreateAccount;
 
+    private String name;
+    private String username;
+    private String password;
+    private String email;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_createaccount);
         Intent receivedIntent=getIntent();
-
+        username = receivedIntent.getStringExtra(LoginActivity.EXTRA_USERNAME);
+        usernameField.setText(username);
 
         wireWidgets();
     }
