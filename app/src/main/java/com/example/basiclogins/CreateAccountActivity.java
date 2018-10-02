@@ -1,6 +1,8 @@
 package com.example.basiclogins;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.CountDownTimer;
 import android.support.constraint.ConstraintLayout;
@@ -9,6 +11,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+
+import java.util.List;
+import java.util.Objects;
 
 public class CreateAccountActivity extends AppCompatActivity {
 
@@ -24,14 +29,23 @@ public class CreateAccountActivity extends AppCompatActivity {
     private String username;
     private String password;
     private String email;
+    private int i;
+    private String iString;
+    private List<String> accountInfoList;
+
+    SharedPreferences sharedPreferences;
+    SharedPreferences.Editor sharedPrefEditor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_createaccount);
-        Intent receivedIntent=getIntent();
+        Intent receivedIntent = getIntent();
         username = receivedIntent.getStringExtra(LoginActivity.EXTRA_USERNAME);
         usernameField.setText(username);
+
+        sharedPreferences = this.getPreferences(Context.MODE_PRIVATE);
+        sharedPrefEditor = sharedPreferences.edit();
 
         wireWidgets();
         buttonCreateAccount.setOnClickListener(new View.OnClickListener() {
@@ -41,32 +55,50 @@ public class CreateAccountActivity extends AppCompatActivity {
                 username = usernameField.getText().toString();
                 password = passwordField.getText().toString();
                 email = emailField.getText().toString();
-                if(password.length()<6 || password.length()>12){
-                    bgelement.setBackgroundColor(Color.argb(255,255,0,0));
-                    new CountDownTimer(1000,1000){
-                        @Override
-                        public void onTick(long millisUntilFinished) {
+                if(name!="" && username!="" && password!="" && email!=""){
+                    if(password.length()<6 || password.length()>12){
+                        bgelement.setBackgroundColor(Color.argb(255,255,0,0));
+                        new CountDownTimer(500,500){
+                            @Override
+                            public void onTick(long millisUntilFinished) {
+
+                            }
+                            @Override
+                            public void onFinish() {
+                                bgelement.setBackgroundColor(Color.argb(255,255,255,255));
+                            }
+                        }.start();
+                    } else if (!Objects.equals(password, confirmpasswordField.getText().toString())){
+                        bgelement.setBackgroundColor(Color.argb(255,255,0,0));
+                        new CountDownTimer(500,500){
+                            @Override
+                            public void onTick(long millisUntilFinished) {
+
+                            }
+                            @Override
+                            public void onFinish() {
+                                bgelement.setBackgroundColor(Color.argb(255,255,255,255));
+                            }
+                        }.start();
+                    } else {
+                        i=1234;
+                        while (true){
+                            iString = String.valueOf(i);
 
                         }
-                        @Override
-                        public void onFinish() {
-                            bgelement.setBackgroundColor(Color.argb(255,255,255,255));
-                        }
-                    }.start();
-                } else if (password!=confirmpasswordField.getText().toString()){
-                    bgelement.setBackgroundColor(Color.argb(255,255,0,0));
-                    new CountDownTimer(1000,1000){
-                        @Override
-                        public void onTick(long millisUntilFinished) {
-
-                        }
-                        @Override
-                        public void onFinish() {
-                            bgelement.setBackgroundColor(Color.argb(255,255,255,255));
-                        }
-                    }.start();
+                    }
                 } else {
+                    bgelement.setBackgroundColor(Color.argb(255,255,0,0));
+                    new CountDownTimer(500,500){
+                        @Override
+                        public void onTick(long millisUntilFinished) {
 
+                        }
+                        @Override
+                        public void onFinish() {
+                            bgelement.setBackgroundColor(Color.argb(255,255,255,255));
+                        }
+                    }.start();
                 }
             }
         });
